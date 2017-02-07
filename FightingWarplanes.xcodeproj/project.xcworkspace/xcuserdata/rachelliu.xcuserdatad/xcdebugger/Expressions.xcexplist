@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GameScene.didBegin(SKPhysicsContact) -&gt; ():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "firstBody.categoryBitMask == PhysicsCategory.Enemy">
+            </PersistentString>
+            <PersistentString
+               value = "PhysicsCategory.Enemy != 0 &amp;&amp; PhysicsCategory.Bullet != 0">
+            </PersistentString>
+            <PersistentString
+               value = "firstBody.categoryBitMask == PhysicsCategory.Bullet">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

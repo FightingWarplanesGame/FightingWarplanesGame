@@ -1,13 +1,11 @@
 //
-//  GameScene.swift
+//  GameplayScene.swift
 //  FightingWarplanes
 //
-//  Created by Rachel Liu on 2017/2/3.
-//  Copyright © 2017年 Rachel Liu. All rights reserved.
+//  Created by 裴雷 on 08/02/2017.
+//  Copyright © 2017 Rachel Liu. All rights reserved.
 //
-
-
-
+/*
 import SpriteKit
 import GameplayKit
 
@@ -43,7 +41,6 @@ extension CGPoint {
     }
 }
 
-
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -51,44 +48,26 @@ struct PhysicsCategory {
     static let Bullet: UInt32 = 0b10      // 2
     static let Player: UInt32 = 0b100      // 3
 }
- 
 
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameplayScene: SKScene, SKPhysicsContactDelegate {
     
     let player = SKSpriteNode(imageNamed: "hero")
     
+    var myPlayer : Player?
+    
+    var canMove = false
+    var moveLeft = false
     
     override func didMove(to view: SKView) {
         
-        //background color
-        backgroundColor = SKColor.cyan
         
-        //add player
-        player.position = CGPoint(x: size.width * 0.5, y: size.height * 0.1)
-        
-        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        player.physicsBody?.isDynamic = true
-        player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        player.physicsBody?.usesPreciseCollisionDetection = true
-        
-        addChild(player)
-        
-        
-        //create physicsWorld
-        physicsWorld.gravity = CGVector.zero
-        physicsWorld.contactDelegate = self
-        
-        //repeat to add enemy
-        run(SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run(addEnemy),
-                SKAction.wait(forDuration: 0.5)
-            ])
-        ))
-        
+    }
+    
+    func managePlayer() {
+        if canMove {
+            myPlayer?.movePlayer(moveLeft: moveLeft)
+        }
     }
     
     func random() -> CGFloat {
@@ -143,39 +122,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMoveDone = SKAction.removeFromParent()
         enemy.run(SKAction.sequence([actionMove, actionMoveDone]))
         
-    
+        
     }
     func touchDown(atPoint pos : CGPoint) {
-            }
+    }
     
     func touchMoved(toPoint pos : CGPoint) {
-            }
+    }
     
     func touchUp(atPoint pos : CGPoint) {
         
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //repeat to add bullet when touch beginning
-        run(SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run(addBullet),
-                SKAction.wait(forDuration: 0.1)
-                ])
-        ), withKey: "shootingBullets")
+       
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches {
-            self.touchMoved(toPoint: t.location(in: self))
-            let touchLocation = t.location(in: self)
-            player.position = touchLocation
-        }
-    }
+            }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-        removeAction(forKey: "shootingBullets");
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -242,12 +209,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let player = secondBody.node as? SKSpriteNode {
                 playerDidCollideWithEnemy(player: player, enemy: enemy)
             }
-
-        
+            
+            
         }
         
         
         
     }
 }
-
+ */

@@ -50,6 +50,7 @@ struct PhysicsCategory {
     static let Enemy   : UInt32 = 0b1       // 1
     static let Bullet: UInt32 = 0b10      // 2
     static let Player: UInt32 = 0b100      // 3
+    static let Bomb: UInt32 = 0b1000      // 4
 }
  
 
@@ -58,11 +59,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let player = SKSpriteNode(imageNamed: "hero")
     
+    var score : Int = 0;
+    let message = "score:"
+    let label = SKLabelNode(fontNamed: "Chalkduster")
     
     override func didMove(to view: SKView) {
         
         //background color
         backgroundColor = SKColor.cyan
+        
+        //label for score
+        label.text = message + String(score)
+        label.fontSize = 20
+        label.fontColor = SKColor.red
+        label.position = CGPoint(x: label.frame.width/2 + 2, y: size.height - label.frame.height - 2)
+        addChild(label)
         
         //add player
         player.position = CGPoint(x: size.width * 0.5, y: size.height * 0.1)
@@ -81,11 +92,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
         
+        //interval of enemy entering
+        let enemyEnterDuration = random(min: CGFloat(1.0), max: CGFloat(2.0))
+        
         //repeat to add enemy
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addEnemy),
-                SKAction.wait(forDuration: 0.5)
+                SKAction.wait(forDuration: TimeInterval(enemyEnterDuration))
             ])
         ))
         
@@ -113,11 +127,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(bullet)
         
-        //add action to bullet
+        //add actions to bullet
         let actionMove = SKAction.move(to: CGPoint(x: bullet.position.x, y: size.height + bullet.size.height/2), duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         bullet.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
+    
+    func addBomb(_ enemyNode: SKSpriteNode, _ enemyDuration: CGFloat) -> Void{
+        //add bomb
+        let bomb = SKSpriteNode(imageNamed: "bomb")
+        bomb.position = enemyNode.position
+        
+        bomb.physicsBody = SKPhysicsBody(circleOfRadius: bomb.size.width/2)
+        bomb.physicsBody?.isDynamic = true
+        bomb.physicsBody?.categoryBitMask = PhysicsCategory.Bomb
+        bomb.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        bomb.physicsBody?.collisionBitMask = PhysicsCategory.None
+        bomb.physicsBody?.usesPreciseCollisionDetection = true
+        
+        addChild(bomb)
+        
+        //time during(speed) of bomb moving
+        let bombMoveDuration = (enemyNode.position.y + enemyNode.size.height/2) /
+                                ((size.height + enemyNode.size.height) / enemyDuration * 1.2)
+        
+        //add actions to bomb
+        let actionMove = SKAction.move(to: CGPoint(x: bomb.position.x, y: -bomb.size.height/2), duration: TimeInterval(bombMoveDuration))
+        let actionMoveDone = SKAction.removeFromParent()
+        bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
+    }
+
+    
     
     func addEnemy(){
         //add enemy
@@ -135,16 +175,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(enemy)
         
-        //speed of enemy
-        let actualDuration = random(min: CGFloat(3.0), max: CGFloat(6.0))
+        //time duration(speed) of enemy moving
+        let enemyMoveDuration = random(min: CGFloat(8.0), max: CGFloat(10.0))
         
-        //add action to enemy
-        let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -enemy.size.height/2), duration: TimeInterval(actualDuration))
+        //add actions to enemy
+        let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -enemy.size.height/2), duration: TimeInterval(enemyMoveDuration))
+        
+        //interval of firing bombs
+        let fireBombDuration = random(min: CGFloat(4.0), max: CGFloat(6.0))
+
+        //enemy repeat to fire bombs
+        let actionForever = SKAction.repeatForever(
+            SKAction.sequence([
+                SKAction.run({self.addBomb(enemy, enemyMoveDuration)}),
+                SKAction.wait(forDuration: TimeInterval(fireBombDuration))
+                ])
+        )
+        
         let actionMoveDone = SKAction.removeFromParent()
-        enemy.run(SKAction.sequence([actionMove, actionMoveDone]))
-        
-    
+        enemy.run(SKAction.sequence([SKAction.group([actionMove, actionForever]), actionMoveDone]))
     }
+    
+    
     func touchDown(atPoint pos : CGPoint) {
             }
     
@@ -187,17 +239,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Called before each frame is rendered
     }
     
-    //collide for shooting
+    //collide between bullet and enemy -> shooting enemy
     func bulletDidCollideWithEnemy(bullet: SKSpriteNode, enemy: SKSpriteNode) {
         print("shootEnemy")
         //when collide, remove both nodes
         bullet.removeFromParent()
         enemy.removeFromParent()
+        score += 1;
+        label.text = message + String(score)
     }
     
-    //collide for game over
+    //collide between player and enemy -> game over
     func playerDidCollideWithEnemy(player: SKSpriteNode, enemy: SKSpriteNode) {
-        print("lose")
+        print("lose - hit enemy")
         //when collide, remove both nodes
         player.removeFromParent()
         enemy.removeFromParent()
@@ -205,15 +259,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //go to GameOverScene
         let loseAction = SKAction.run() {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false)
+            let gameOverScene = GameOverScene(size: self.size, won: false, score: self.score)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         
         run(loseAction)
     }
     
+    //collide between player and bomb -> game over
+    func playerDidCollideWithBomb(player: SKSpriteNode, bomb: SKSpriteNode) {
+        print("lose - hit bomb")
+        //when collide, remove both nodes
+        player.removeFromParent()
+        bomb.removeFromParent()
+        
+        //go to GameOverScene
+        let loseAction = SKAction.run() {
+            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+            let gameOverScene = GameOverScene(size: self.size, won: false, score: self.score)
+            self.view?.presentScene(gameOverScene, transition: reveal)
+        }
+        
+        run(loseAction)
+    }
+
+    
     func didBegin(_ contact: SKPhysicsContact) {
-        // 1
+        //first < second
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
@@ -225,7 +297,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        // 2
+        //set different collision situations
         if ((PhysicsCategory.Enemy != 0) &&
             (PhysicsCategory.Bullet != 0) &&
             (firstBody.categoryBitMask == PhysicsCategory.Enemy) &&
@@ -242,8 +314,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let player = secondBody.node as? SKSpriteNode {
                 playerDidCollideWithEnemy(player: player, enemy: enemy)
             }
-
-        
+        }else if((PhysicsCategory.Bomb != 0) &&
+            (PhysicsCategory.Player != 0) &&
+            (firstBody.categoryBitMask == PhysicsCategory.Player) &&
+            (secondBody.categoryBitMask == PhysicsCategory.Bomb)){
+            if let player = firstBody.node as? SKSpriteNode,
+                let bomb = secondBody.node as? SKSpriteNode {
+                playerDidCollideWithBomb(player: player, bomb: bomb)
+            }
         }
         
         

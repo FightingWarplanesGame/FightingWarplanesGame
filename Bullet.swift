@@ -9,7 +9,7 @@
 import SpriteKit
 
 class Bullet : Weapon {
-    // the animation associated with the player
+    // the animation associated with the bullet
     private var animatePlayerAction = SKAction();
     
     // ctor
@@ -27,7 +27,7 @@ class Bullet : Weapon {
         self.position = hero.position
     }
     
-    // this is one of the animation
+    // create a Animation for move action
     func createMoveAnimation(_ viewSize : CGSize) {
         animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: viewSize.height + self.size.height/2), duration: 2.0)
     }

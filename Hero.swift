@@ -30,7 +30,6 @@ class Hero : SKSpriteNode {
         let texture = SKTexture(imageNamed: imageNamed)
         super.init(texture: texture, color: UIColor.cyan, size: texture.size())
         
-        
         self.position = CGPoint(x: viewSize.width * 0.5, y: viewSize.height * 0.1)
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)

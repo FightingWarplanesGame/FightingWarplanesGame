@@ -14,6 +14,7 @@
 		5A1BD66E1E44894500FF8A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1BD66D1E44894500FF8A20 /* Assets.xcassets */; };
 		5A1BD6711E44894500FF8A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1BD66F1E44894500FF8A20 /* LaunchScreen.storyboard */; };
 		5A1BD6791E44AEA100FF8A20 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1BD6781E44AEA100FF8A20 /* GameOverScene.swift */; };
+		5A69964A1E55A20900B64540 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6996491E55A20900B64540 /* Calculation.swift */; };
 		7A1B9BE61E4C37B300DC5DBD /* Pause Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BB21E4C37B300DC5DBD /* Pause Menu.png */; };
 		7A1B9BE71E4C37B300DC5DBD /* Quit Button 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BB31E4C37B300DC5DBD /* Quit Button 2.png */; };
 		7A1B9BE81E4C37B300DC5DBD /* Resume Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BB41E4C37B300DC5DBD /* Resume Button.png */; };
@@ -83,6 +84,7 @@
 		5A1BD6701E44894500FF8A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A1BD6721E44894500FF8A20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1BD6781E44AEA100FF8A20 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		5A6996491E55A20900B64540 /* Calculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		7A1B9BB21E4C37B300DC5DBD /* Pause Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pause Menu.png"; sourceTree = "<group>"; };
 		7A1B9BB31E4C37B300DC5DBD /* Quit Button 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quit Button 2.png"; sourceTree = "<group>"; };
 		7A1B9BB41E4C37B300DC5DBD /* Resume Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resume Button.png"; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 				5A1BD6781E44AEA100FF8A20 /* GameOverScene.swift */,
 			);
 			path = FightingWarplanes;
+			sourceTree = "<group>";
+		};
+		5A6996461E55A0EC00B64540 /* Calculation */ = {
+			isa = PBXGroup;
+			children = (
+				5A6996491E55A20900B64540 /* Calculation.swift */,
+			);
+			name = Calculation;
 			sourceTree = "<group>";
 		};
 		7A1B9BB01E4C365500DC5DBD /* Assets */ = {
@@ -338,6 +348,7 @@
 		7A1B9C131E4C404100DC5DBD /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5A6996461E55A0EC00B64540 /* Calculation */,
 				7A7B0E0E1E5587010034C098 /* Category Class */,
 				7AC212571E54EE8100F5551C /* User Class */,
 				7AC212541E54EAF600F5551C /* Supplement */,
@@ -539,6 +550,7 @@
 				7A1B9C191E4C495D00DC5DBD /* Hero.swift in Sources */,
 				7AC212481E54DA3400F5551C /* Enemy.swift in Sources */,
 				7A8242711E4D3E1B0056A573 /* MainMenuScene.swift in Sources */,
+				5A69964A1E55A20900B64540 /* Calculation.swift in Sources */,
 				7AC2124D1E54DFCD00F5551C /* Bullet.swift in Sources */,
 				7A7B0E101E5587440034C098 /* PhysicsCategory.swift in Sources */,
 				5A1BD6611E44894500FF8A20 /* AppDelegate.swift in Sources */,

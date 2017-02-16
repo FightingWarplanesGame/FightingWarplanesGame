@@ -11,49 +11,6 @@
 import SpriteKit
 import GameplayKit
 
-func + (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x + right.x, y: left.y + right.y)
-}
-
-func - (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x - right.x, y: left.y - right.y)
-}
-
-func * (point: CGPoint, scalar: CGFloat) -> CGPoint {
-    return CGPoint(x: point.x * scalar, y: point.y * scalar)
-}
-
-func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
-    return CGPoint(x: point.x / scalar, y: point.y / scalar)
-}
-
-#if !(arch(x86_64) || arch(arm64))
-    func sqrt(a: CGFloat) -> CGFloat {
-        return CGFloat(sqrtf(Float(a)))
-    }
-#endif
-
-extension CGPoint {
-    func length() -> CGFloat {
-        return sqrt(x*x + y*y)
-    }
-    
-    func normalized() -> CGPoint {
-        return self / length()
-    }
-}
-
-/*
-struct PhysicsCategory {
-    static let None      : UInt32 = 0
-    static let All       : UInt32 = UInt32.max
-    static let Enemy   : UInt32 = 0b1       // 1
-    static let Bullet: UInt32 = 0b10      // 2
-    static let Player: UInt32 = 0b100      // 3
-    static let Bomb: UInt32 = 0b1000      // 4
-}
-*/
-
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -64,8 +21,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let label = SKLabelNode(fontNamed: "Chalkduster")
     
     override func didMove(to view: SKView) {
-        hero = Hero(imageNamed: "hero", viewSize : size)
-        
         //background color
         backgroundColor = SKColor.cyan
         
@@ -76,17 +31,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         label.position = CGPoint(x: label.frame.width/2 + 2, y: size.height - label.frame.height - 2)
         addChild(label)
         
-        //add player
-       
-        addChild(hero!)
-        
-        
         //create physicsWorld
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = self
         
+        //add player
+        hero = Hero(imageNamed: "hero", viewSize : size)
+        addChild(hero!)
+        
         //interval of enemy entering
-        let enemyEnterDuration = random(min: CGFloat(1.0), max: CGFloat(2.0))
+        let enemyEnterDuration = Calculation.random(min: CGFloat(1.0), max: CGFloat(2.0))
         
         //repeat to add enemy
         run(SKAction.repeatForever(
@@ -98,72 +52,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func random() -> CGFloat {
-        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-    }
-    
-    func random(min: CGFloat, max: CGFloat) -> CGFloat {
-        return random() * (max - min) + min
-    }
-    
     func addBullet(){
         //add bullet
         let bullet = Bullet(imageNamed: "bullet", hero: hero!)
         addChild(bullet)
+        
+        //add actions to bullet
         bullet.createMoveAnimation(size)
         bullet.runAnimation()
     }
     
-    func addBomb(_ enemyNode: SKSpriteNode, _ enemyDuration: CGFloat) -> Void{
+    func addBomb(_ enemyNode: Enemy!, _ enemyDuration: CGFloat!) -> Void{
         //add bomb
-        let bomb = SKSpriteNode(imageNamed: "bomb")
-        bomb.position = enemyNode.position
-        
-        bomb.physicsBody = SKPhysicsBody(circleOfRadius: bomb.size.width/2)
-        bomb.physicsBody?.isDynamic = true
-        bomb.physicsBody?.categoryBitMask = PhysicsCategory.Bomb
-        bomb.physicsBody?.contactTestBitMask = PhysicsCategory.Player
-        bomb.physicsBody?.collisionBitMask = PhysicsCategory.None
-        bomb.physicsBody?.usesPreciseCollisionDetection = true
-        
+        let bomb = Bomb(imageNamed: "bomb", enemy: enemyNode!, enemyDuration: enemyDuration!)
         addChild(bomb)
         
-        //time during(speed) of bomb moving
-        let bombMoveDuration = (enemyNode.position.y + enemyNode.size.height/2) /
-                                ((size.height + enemyNode.size.height) / enemyDuration * 1.2)
-        
         //add actions to bomb
-        let actionMove = SKAction.move(to: CGPoint(x: bomb.position.x, y: -bomb.size.height/2), duration: TimeInterval(bombMoveDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        bomb.run(SKAction.sequence([actionMove, actionMoveDone]))
+        bomb.createMoveAnimation(size)
+        bomb.runAnimation()
+
     }
 
     
     
     func addEnemy(){
         //add enemy
-        let enemy = SKSpriteNode(imageNamed: "enemy")
-        
-        enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size) // 1
-        enemy.physicsBody?.isDynamic = true // 2
-        enemy.physicsBody?.categoryBitMask = PhysicsCategory.Enemy // 3
-        enemy.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet // 4
-        enemy.physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+        let enemy = Enemy(imageNamed: "enemy")
         
         //start position
-        let actualX = random(min: enemy.size.width/2, max: size.width - enemy.size.width/2)
+        let actualX = Calculation.random(min: enemy.size.width/2, max: size.width - enemy.size.width/2)
         enemy.position = CGPoint(x: actualX, y: size.height + enemy.size.height/2)
         
         addChild(enemy)
         
         //time duration(speed) of enemy moving
-        let enemyMoveDuration = random(min: CGFloat(8.0), max: CGFloat(10.0))
+        let enemyMoveDuration = Calculation.random(min: CGFloat(8.0), max: CGFloat(10.0))
         
         //add actions to enemy
         let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -enemy.size.height/2), duration: TimeInterval(enemyMoveDuration))
         
         //interval of firing bombs
-        let fireBombDuration = random(min: CGFloat(4.0), max: CGFloat(6.0))
+        let fireBombDuration = Calculation.random(min: CGFloat(4.0), max: CGFloat(6.0))
 
         //enemy repeat to fire bombs
         let actionForever = SKAction.repeatForever(

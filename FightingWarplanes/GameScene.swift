@@ -43,7 +43,7 @@ extension CGPoint {
     }
 }
 
-
+/*
 struct PhysicsCategory {
     static let None      : UInt32 = 0
     static let All       : UInt32 = UInt32.max
@@ -52,18 +52,19 @@ struct PhysicsCategory {
     static let Player: UInt32 = 0b100      // 3
     static let Bomb: UInt32 = 0b1000      // 4
 }
- 
+*/
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    let player = SKSpriteNode(imageNamed: "hero")
+    var hero : Hero? = nil
     
     var score : Int = 0;
     let message = "score:"
     let label = SKLabelNode(fontNamed: "Chalkduster")
     
     override func didMove(to view: SKView) {
+        hero = Hero(imageNamed: "hero", viewSize : size)
         
         //background color
         backgroundColor = SKColor.cyan
@@ -76,16 +77,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(label)
         
         //add player
-        player.position = CGPoint(x: size.width * 0.5, y: size.height * 0.1)
-        
-        player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width/2)
-        player.physicsBody?.isDynamic = true
-        player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        player.physicsBody?.usesPreciseCollisionDetection = true
-        
-        addChild(player)
+       
+        addChild(hero!)
         
         
         //create physicsWorld
@@ -115,22 +108,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addBullet(){
         //add bullet
-        let bullet = SKSpriteNode(imageNamed: "bullet")
-        bullet.position = player.position
-        
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.size.width/2)
-        bullet.physicsBody?.isDynamic = true
-        bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
-        bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy
-        bullet.physicsBody?.collisionBitMask = PhysicsCategory.None
-        bullet.physicsBody?.usesPreciseCollisionDetection = true
-        
+        let bullet = Bullet(imageNamed: "bullet", hero: hero!)
         addChild(bullet)
-        
-        //add actions to bullet
-        let actionMove = SKAction.move(to: CGPoint(x: bullet.position.x, y: size.height + bullet.size.height/2), duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        bullet.run(SKAction.sequence([actionMove, actionMoveDone]))
+        bullet.createMoveAnimation(size)
+        bullet.runAnimation()
     }
     
     func addBomb(_ enemyNode: SKSpriteNode, _ enemyDuration: CGFloat) -> Void{
@@ -221,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for t in touches {
             self.touchMoved(toPoint: t.location(in: self))
             let touchLocation = t.location(in: self)
-            player.position = touchLocation
+            hero?.position = touchLocation
         }
     }
     

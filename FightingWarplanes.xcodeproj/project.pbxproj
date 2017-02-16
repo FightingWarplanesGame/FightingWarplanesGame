@@ -58,11 +58,19 @@
 		7A1B9C0F1E4C37B300DC5DBD /* Start Game Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BE51E4C37B300DC5DBD /* Start Game Button.png */; };
 		7A1B9C121E4C398F00DC5DBD /* GameplayScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9C111E4C398F00DC5DBD /* GameplayScene.sks */; };
 		7A1B9C161E4C40B400DC5DBD /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C151E4C40B400DC5DBD /* GameplayScene.swift */; };
-		7A1B9C191E4C495D00DC5DBD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C181E4C495D00DC5DBD /* Player.swift */; };
+		7A1B9C191E4C495D00DC5DBD /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C181E4C495D00DC5DBD /* Hero.swift */; };
 		7A1B9C1B1E4C615600DC5DBD /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */; };
+		7A7B0E101E5587440034C098 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */; };
 		7A8242711E4D3E1B0056A573 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8242701E4D3E1B0056A573 /* MainMenuScene.swift */; };
 		7A8242731E4D42930056A573 /* HignscoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A8242721E4D42930056A573 /* HignscoreScene.sks */; };
 		7A87E9E61E4DB3B000FCC26C /* Menu BG2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A87E9E51E4DB3B000FCC26C /* Menu BG2.png */; };
+		7AC212481E54DA3400F5551C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC212471E54DA3400F5551C /* Enemy.swift */; };
+		7AC2124B1E54DF6F00F5551C /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2124A1E54DF6F00F5551C /* Weapon.swift */; };
+		7AC2124D1E54DFCD00F5551C /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2124C1E54DFCD00F5551C /* Bullet.swift */; };
+		7AC2124F1E54E01F00F5551C /* Missile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC2124E1E54E01F00F5551C /* Missile.swift */; };
+		7AC212511E54E71C00F5551C /* Bomb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC212501E54E71C00F5551C /* Bomb.swift */; };
+		7AC212531E54E75300F5551C /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC212521E54E75300F5551C /* Laser.swift */; };
+		7AC212561E54ECAC00F5551C /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC212551E54ECAC00F5551C /* Supplement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,11 +127,19 @@
 		7A1B9BE51E4C37B300DC5DBD /* Start Game Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Game Button.png"; sourceTree = "<group>"; };
 		7A1B9C111E4C398F00DC5DBD /* GameplayScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameplayScene.sks; sourceTree = "<group>"; };
 		7A1B9C151E4C40B400DC5DBD /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
-		7A1B9C181E4C495D00DC5DBD /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		7A1B9C181E4C495D00DC5DBD /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		7A8242701E4D3E1B0056A573 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		7A8242721E4D42930056A573 /* HignscoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HignscoreScene.sks; sourceTree = "<group>"; };
 		7A87E9E51E4DB3B000FCC26C /* Menu BG2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu BG2.png"; sourceTree = "<group>"; };
+		7AC212471E54DA3400F5551C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		7AC2124A1E54DF6F00F5551C /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		7AC2124C1E54DFCD00F5551C /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		7AC2124E1E54E01F00F5551C /* Missile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
+		7AC212501E54E71C00F5551C /* Bomb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bomb.swift; sourceTree = "<group>"; };
+		7AC212521E54E75300F5551C /* Laser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
+		7AC212551E54ECAC00F5551C /* Supplement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,7 +338,12 @@
 		7A1B9C131E4C404100DC5DBD /* Game Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7A1B9C171E4C493400DC5DBD /* Player Class */,
+				7A7B0E0E1E5587010034C098 /* Category Class */,
+				7AC212571E54EE8100F5551C /* User Class */,
+				7AC212541E54EAF600F5551C /* Supplement */,
+				7AC212491E54DC8A00F5551C /* Arsenal */,
+				7AC212461E54D9FD00F5551C /* Enemy Class */,
+				7A1B9C171E4C493400DC5DBD /* Hero Class */,
 				7A1B9C141E4C404D00DC5DBD /* Scene Classes */,
 			);
 			name = "Game Classes";
@@ -337,12 +358,55 @@
 			name = "Scene Classes";
 			sourceTree = "<group>";
 		};
-		7A1B9C171E4C493400DC5DBD /* Player Class */ = {
+		7A1B9C171E4C493400DC5DBD /* Hero Class */ = {
 			isa = PBXGroup;
 			children = (
-				7A1B9C181E4C495D00DC5DBD /* Player.swift */,
+				7A1B9C181E4C495D00DC5DBD /* Hero.swift */,
 			);
-			name = "Player Class";
+			name = "Hero Class";
+			sourceTree = "<group>";
+		};
+		7A7B0E0E1E5587010034C098 /* Category Class */ = {
+			isa = PBXGroup;
+			children = (
+				7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */,
+			);
+			name = "Category Class";
+			sourceTree = "<group>";
+		};
+		7AC212461E54D9FD00F5551C /* Enemy Class */ = {
+			isa = PBXGroup;
+			children = (
+				7AC212471E54DA3400F5551C /* Enemy.swift */,
+			);
+			name = "Enemy Class";
+			sourceTree = "<group>";
+		};
+		7AC212491E54DC8A00F5551C /* Arsenal */ = {
+			isa = PBXGroup;
+			children = (
+				7AC2124A1E54DF6F00F5551C /* Weapon.swift */,
+				7AC2124C1E54DFCD00F5551C /* Bullet.swift */,
+				7AC2124E1E54E01F00F5551C /* Missile.swift */,
+				7AC212501E54E71C00F5551C /* Bomb.swift */,
+				7AC212521E54E75300F5551C /* Laser.swift */,
+			);
+			name = Arsenal;
+			sourceTree = "<group>";
+		};
+		7AC212541E54EAF600F5551C /* Supplement */ = {
+			isa = PBXGroup;
+			children = (
+				7AC212551E54ECAC00F5551C /* Supplement.swift */,
+			);
+			name = Supplement;
+			sourceTree = "<group>";
+		};
+		7AC212571E54EE8100F5551C /* User Class */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "User Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,11 +530,19 @@
 			files = (
 				5A1BD6671E44894500FF8A20 /* GameScene.swift in Sources */,
 				7A1B9C161E4C40B400DC5DBD /* GameplayScene.swift in Sources */,
+				7AC212561E54ECAC00F5551C /* Supplement.swift in Sources */,
 				5A1BD6691E44894500FF8A20 /* GameViewController.swift in Sources */,
 				5A1BD6791E44AEA100FF8A20 /* GameOverScene.swift in Sources */,
-				7A1B9C191E4C495D00DC5DBD /* Player.swift in Sources */,
+				7AC2124F1E54E01F00F5551C /* Missile.swift in Sources */,
+				7AC212511E54E71C00F5551C /* Bomb.swift in Sources */,
+				7AC212531E54E75300F5551C /* Laser.swift in Sources */,
+				7A1B9C191E4C495D00DC5DBD /* Hero.swift in Sources */,
+				7AC212481E54DA3400F5551C /* Enemy.swift in Sources */,
 				7A8242711E4D3E1B0056A573 /* MainMenuScene.swift in Sources */,
+				7AC2124D1E54DFCD00F5551C /* Bullet.swift in Sources */,
+				7A7B0E101E5587440034C098 /* PhysicsCategory.swift in Sources */,
 				5A1BD6611E44894500FF8A20 /* AppDelegate.swift in Sources */,
+				7AC2124B1E54DF6F00F5551C /* Weapon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

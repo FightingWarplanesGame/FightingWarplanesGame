@@ -30,7 +30,7 @@ class Bomb : Weapon {
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
         self.physicsBody?.usesPreciseCollisionDetection = true
         
-        self.position = _enemy!.position
+        self.position = CGPoint(x: _enemy!.position.x, y: _enemy!.position.y - _enemy!.size.height/2 - self.size.height/2)
         
     }
     
@@ -40,7 +40,7 @@ class Bomb : Weapon {
         let bombMoveDuration = (_enemy!.position.y + _enemy!.size.height/2) /
             ((viewSize.height + _enemy!.size.height) / _enemyDuration! * 1.2)
         
-        animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: -self.size.height), duration: TimeInterval(bombMoveDuration))
+        animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: -self.size.height/2), duration: TimeInterval(bombMoveDuration))
     }
     
     // run the animation

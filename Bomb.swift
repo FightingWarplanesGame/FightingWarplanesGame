@@ -40,7 +40,7 @@ class Bomb : Weapon {
         let bombMoveDuration = (_enemy!.position.y + _enemy!.size.height/2) /
             ((viewSize.height + _enemy!.size.height) / _enemyDuration! * 1.2)
         
-        animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: -self.size.height/2), duration: TimeInterval(bombMoveDuration))
+        animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: -self.size.height), duration: TimeInterval(bombMoveDuration))
     }
     
     // run the animation
@@ -53,4 +53,5 @@ class Bomb : Weapon {
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

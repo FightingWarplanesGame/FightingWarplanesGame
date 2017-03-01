@@ -78,7 +78,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A1BD65D1E44894500FF8A20 /* FightingWarplanes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FightingWarplanes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1BD65D1E44894500FF8A20 /* Warplanes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Warplanes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1BD6601E44894500FF8A20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A1BD6661E44894500FF8A20 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		5A1BD6681E44894500FF8A20 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		5A1BD65E1E44894500FF8A20 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A1BD65D1E44894500FF8A20 /* FightingWarplanes.app */,
+				5A1BD65D1E44894500FF8A20 /* Warplanes.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -454,7 +454,7 @@
 			);
 			name = FightingWarplanes;
 			productName = FightingWarplanes;
-			productReference = 5A1BD65D1E44894500FF8A20 /* FightingWarplanes.app */;
+			productReference = 5A1BD65D1E44894500FF8A20 /* Warplanes.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -698,7 +698,7 @@
 				INFOPLIST_FILE = FightingWarplanes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lei001.FightingWarplanes;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Warplanes;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -711,7 +711,7 @@
 				INFOPLIST_FILE = FightingWarplanes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = lei001.FightingWarplanes;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Warplanes;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -17,6 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var hero : Hero? = nil
     
     var score : Int = 0;
+    
     let message = "score:"
     let label = SKLabelNode(fontNamed: "Chalkduster")
     let gameLayer = SKNode()
@@ -59,7 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         gameLayer.run(SKAction.repeatForever(
             SKAction.sequence([
-                SKAction.run(addEnemy),
+                SKAction.run(addNormalEnemy),
                 SKAction.wait(forDuration: TimeInterval(enemyEnterDuration))
                 ])
         ))
@@ -149,9 +150,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     
     
-    func addEnemy(){
+    func addNormalEnemy(){
         //add enemy
         let enemy = Enemy(imageNamed: "enemy")
+        enemy.heart = 5
         
         //start position
         let actualX = Calculation.random(min: enemy.size.width/2, max: size.width - enemy.size.width/2)
@@ -271,17 +273,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //collide between bullet and enemy -> shooting enemy
-    func bulletDidCollideWithEnemy(bullet: SKSpriteNode, enemy: SKSpriteNode) {
+    func bulletDidCollideWithEnemy(bullet: SKSpriteNode, enemy: Enemy) {
         print("shootEnemy")
-        //when collide, remove both nodes
-        bullet.removeFromParent()
-        enemy.removeFromParent()
-        score += 1;
-        label.text = message + String(score)
+        if (enemy.heart == 0){
+            //when collide, remove both nodes
+            bullet.removeFromParent()
+            enemy.removeFromParent()
+            score += 1;
+            label.text = message + String(score)
+        } else {
+            
+            enemy.heart -= 1
+            bullet.removeFromParent()
+        }
+        
+       
     }
     
+    
+    
     //collide between player and enemy -> game over
-    func playerDidCollideWithEnemy(player: SKSpriteNode, enemy: SKSpriteNode) {
+    func playerDidCollideWithEnemy(player: SKSpriteNode, enemy: Enemy) {
         print("lose - hit enemy")
         //when collide, remove both nodes
         player.removeFromParent()
@@ -333,7 +345,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (PhysicsCategory.Bullet != 0) &&
             (firstBody.categoryBitMask == PhysicsCategory.Enemy) &&
             (secondBody.categoryBitMask == PhysicsCategory.Bullet)){
-            if let enemy = firstBody.node as? SKSpriteNode,
+            if let enemy = firstBody.node as? Enemy,
                 let bullet = secondBody.node as? SKSpriteNode {
                 bulletDidCollideWithEnemy(bullet: bullet, enemy: enemy)
             }
@@ -341,7 +353,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (PhysicsCategory.Player != 0) &&
             (firstBody.categoryBitMask == PhysicsCategory.Enemy) &&
             (secondBody.categoryBitMask == PhysicsCategory.Player)){
-            if let enemy = firstBody.node as? SKSpriteNode,
+            if let enemy = firstBody.node as? Enemy,
                 let player = secondBody.node as? SKSpriteNode {
                 playerDidCollideWithEnemy(player: player, enemy: enemy)
             }

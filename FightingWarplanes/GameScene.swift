@@ -80,8 +80,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func moveGround(){
         //speed of the backgroud moving
-        background1.position = CGPoint(x:background1.position.x, y:background1.position.y - 15)
-        background2.position = CGPoint(x:background2.position.x, y:background2.position.y - 15)
+        background1.position = CGPoint(x:background1.position.x, y:background1.position.y - 5)
+        background2.position = CGPoint(x:background2.position.x, y:background2.position.y - 5)
         
         if(background1.position.y < -background1.size.height)
         {

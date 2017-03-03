@@ -29,7 +29,7 @@ class Bullet : Weapon {
     
     // create a Animation for move action
     func createMoveAnimation(_ viewSize : CGSize) {
-        animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: viewSize.height + self.size.height/2), duration: 1)
+        animatePlayerAction = SKAction.move(to: CGPoint(x: self.position.x, y: viewSize.height + self.size.height/2), duration: 2.0)
     }
     
     // run the animation

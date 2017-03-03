@@ -153,7 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addNormalEnemy(){
         //add enemy
         let enemy = Enemy(imageNamed: "enemy")
-        enemy.heart = 5
+        enemy.heart = 0
         
         //start position
         let actualX = Calculation.random(min: enemy.size.width/2, max: size.width - enemy.size.width/2)
@@ -202,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             run(SKAction.repeatForever(
                 SKAction.sequence([
                     SKAction.run(addBullet),
-                    SKAction.wait(forDuration: 0.1)
+                    SKAction.wait(forDuration: 0.5)
                     ])
             ), withKey: "shootingBullets")
         }

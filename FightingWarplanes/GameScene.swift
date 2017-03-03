@@ -202,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             run(SKAction.repeatForever(
                 SKAction.sequence([
                     SKAction.run(addBullet),
-                    SKAction.wait(forDuration: 0.5)
+                    SKAction.wait(forDuration: 0.1)
                     ])
             ), withKey: "shootingBullets")
         }

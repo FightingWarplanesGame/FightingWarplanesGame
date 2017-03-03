@@ -158,7 +158,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func addNormalEnemy(){
         //add enemy
         let enemy = Enemy(imageNamed: "enemy")
-        enemy.heart = 0
+        enemy.heart = 10
         
         //start position
         let actualX = Calculation.random(min: enemy.size.width/2, max: size.width - enemy.size.width/2)
@@ -290,10 +290,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             score += 1;
             label.text = message + String(score)
         } else {
-            
+            let wait = SKAction.wait(forDuration: 0.1)
+            let red = SKAction.run {
+                enemy.run(SKAction.colorize(with: .red, colorBlendFactor: 0.8, duration: 0.1))
+            }
+            let clear = SKAction.run {
+                enemy.run(SKAction.colorize(with: .white, colorBlendFactor: 1, duration: 0.1))
+            }
+            let hitColor = SKAction.sequence([red,wait,clear])
+            enemy.run(hitColor)
             enemy.heart -= 1
+            enemy.run(SKAction.colorize(with: .white, colorBlendFactor: 1, duration: 10))
+            enemy.color = .white
             bullet.removeFromParent()
         }
+        
         
        
     }

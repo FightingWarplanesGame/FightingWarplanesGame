@@ -65,6 +65,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ])
         ))
         
+        // add music background
+        let bgMusic : SKAudioNode = SKAudioNode(fileNamed: "Background music.mp3")
+        bgMusic.autoplayLooped = true
+        self.addChild(bgMusic)
+        
     }
     
     func addBackGround() {
@@ -277,6 +282,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("shootEnemy")
         if (enemy.heart == 0){
             //when collide, remove both nodes
+            let explosion : SKEmitterNode = SKEmitterNode(fileNamed: "Explosion")!
+            explosion.position = enemy.position
+            self.addChild(explosion)
             bullet.removeFromParent()
             enemy.removeFromParent()
             score += 1;

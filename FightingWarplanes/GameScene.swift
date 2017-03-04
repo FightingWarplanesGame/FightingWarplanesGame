@@ -37,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var returnButton: SKSpriteNode! = nil
     let background1 = SKSpriteNode(imageNamed: "first_top")
     let background2 = SKSpriteNode(imageNamed: "second_bottom")
+    let bgMusic : SKAudioNode = SKAudioNode(fileNamed: "Background music.mp3")
+    
     
     override func didMove(to view: SKView) {
         
@@ -101,9 +103,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         
         // add music background
-        let bgMusic : SKAudioNode = SKAudioNode(fileNamed: "Background music.mp3")
         bgMusic.autoplayLooped = true
-        self.addChild(bgMusic)
+        bgMusic.run(SKAction.play())
+        gameLayer.addChild(bgMusic)
         
     }
     
@@ -215,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func addEnemy2(){
         let enemy2 = Enemy(imageNamed: "enemy2")
-        enemy2.heart = 10
+        enemy2.heart = 20
         
         //start position
         let actualX = Calculation.random(min: enemy2.size.width/2, max: size.width - enemy2.size.width/2)
@@ -249,7 +251,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //add enemy
         let enemy = Enemy(imageNamed: "enemy")
-        enemy.heart = 10
+        enemy.heart = 5
         
         //start position
         let actualX = Calculation.random(min: enemy.size.width/2, max: size.width - enemy.size.width/2)
@@ -328,11 +330,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let touchLocation = touch!.location(in: self)
         if pauseButton.contains(touchLocation) {
             if gameLayer.isPaused {
+                gameLayer.addChild(bgMusic)
+                bgMusic.autoplayLooped = true
                 pauseButton.isHidden = false
                 playButton.isHidden = true
                 gameLayer.isPaused = false
                 print("resume!")
             }else{
+                bgMusic.removeFromParent()
                 gameLayer.isPaused = true
                 pauseButton.isHidden = true
                 playButton.isHidden = false
@@ -369,19 +374,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //collide between bullet and enemy -> shooting enemy
-    func bulletDidCollideWithEnemy(bullet: SKSpriteNode, enemy: Enemy) {
+    func bulletDidCollideWithEnemy(bullet: Bullet, enemy: Enemy) {
         print("shootEnemy")
         if (enemy.heart == 0){
             //when collide, remove both nodes
             let explosion : SKEmitterNode = SKEmitterNode(fileNamed: "Explosion")!
             explosion.position = enemy.position
-            self.addChild(explosion)
+            gameLayer.addChild(explosion)
             bullet.removeFromParent()
             enemy.removeFromParent()
+            
             score += 1;
             scoreLabel.text = scoreMessage + String(score)
         } else {
-            let wait = SKAction.wait(forDuration: 0.1)
+            let wait = SKAction.wait(forDuration: 0.2)
             let red = SKAction.run {
                 enemy.run(SKAction.colorize(with: .red, colorBlendFactor: 0.8, duration: 0.1))
             }
@@ -403,37 +409,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     //collide between player and enemy -> game over
-    func playerDidCollideWithEnemy(player: SKSpriteNode, enemy: Enemy) {
+    func playerDidCollideWithEnemy(player: Hero, enemy: Enemy) {
         print("lose - hit enemy")
+        let explosion : SKEmitterNode = SKEmitterNode(fileNamed: "Explosion")!
+        explosion.position = player.position
+        gameLayer.addChild(explosion)
         //when collide, remove both nodes
+        
         player.removeFromParent()
         enemy.removeFromParent()
         
+        let delay = SKAction.wait(forDuration: 1)
         //go to GameOverScene
         let loseAction = SKAction.run() {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.size, won: false, score: self.score)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
-        
-        run(loseAction)
+        let sequence = SKAction.sequence([delay,loseAction])
+        run(sequence)
     }
     
     //collide between player and bomb -> game over
-    func playerDidCollideWithBomb(player: SKSpriteNode, bomb: SKSpriteNode) {
+    func playerDidCollideWithBomb(player: Hero, bomb: Bomb) {
         print("lose - hit bomb")
+        let explosion : SKEmitterNode = SKEmitterNode(fileNamed: "Explosion")!
+        explosion.position = player.position
+        gameLayer.addChild(explosion)
         //when collide, remove both nodes
+        
         player.removeFromParent()
         bomb.removeFromParent()
         
+        let delay = SKAction.wait(forDuration: 1)
         //go to GameOverScene
         let loseAction = SKAction.run() {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             let gameOverScene = GameOverScene(size: self.size, won: false, score: self.score)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
+        let sequence = SKAction.sequence([delay,loseAction])
         
-        run(loseAction)
+        run(sequence)
     }
 
     
@@ -456,7 +473,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (firstBody.categoryBitMask == PhysicsCategory.Enemy) &&
             (secondBody.categoryBitMask == PhysicsCategory.Bullet)){
             if let enemy = firstBody.node as? Enemy,
-                let bullet = secondBody.node as? SKSpriteNode {
+                let bullet = secondBody.node as? Bullet {
                 bulletDidCollideWithEnemy(bullet: bullet, enemy: enemy)
             }
         } else if((PhysicsCategory.Enemy != 0) &&
@@ -464,15 +481,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (firstBody.categoryBitMask == PhysicsCategory.Enemy) &&
             (secondBody.categoryBitMask == PhysicsCategory.Player)){
             if let enemy = firstBody.node as? Enemy,
-                let player = secondBody.node as? SKSpriteNode {
+                let player = secondBody.node as? Hero {
                 playerDidCollideWithEnemy(player: player, enemy: enemy)
             }
         }else if((PhysicsCategory.Bomb != 0) &&
             (PhysicsCategory.Player != 0) &&
             (firstBody.categoryBitMask == PhysicsCategory.Player) &&
             (secondBody.categoryBitMask == PhysicsCategory.Bomb)){
-            if let player = firstBody.node as? SKSpriteNode,
-                let bomb = secondBody.node as? SKSpriteNode {
+            if let player = firstBody.node as? Hero,
+                let bomb = secondBody.node as? Bomb {
                 playerDidCollideWithBomb(player: player, bomb: bomb)
             }
         }

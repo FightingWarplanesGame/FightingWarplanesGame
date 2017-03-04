@@ -16,10 +16,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var hero : Hero? = nil
     
-    var score : Int = 0;
+    //score
+    var score : Int = 0
+    let scoreMessage = "score:"
+    let scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
     
-    let message = "score:"
-    let label = SKLabelNode(fontNamed: "Chalkduster")
+    //timer
+    var timer : Int = 0
+    var sec : Int = 0
+    var min : Int = 0
+    var hour : Int = 0
+    
+    let timerMessage = "timer:"
+    let timerLabel = SKLabelNode(fontNamed: "Chalkduster")
+    
     let gameLayer = SKNode()
     //let pauseLayer = SKNode()
     var pauseButton: SKSpriteNode! = nil
@@ -38,11 +48,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         //label for score
-        label.text = message + String(score)
-        label.fontSize = 20
-        label.fontColor = SKColor.red
-        label.position = CGPoint(x: label.frame.width/2 + 2, y: size.height - label.frame.height - 2)
-        gameLayer.addChild(label)
+        scoreLabel.text = scoreMessage + String(score)
+        scoreLabel.fontSize = 20
+        scoreLabel.fontColor = SKColor.red
+        scoreLabel.position = CGPoint(x: scoreLabel.frame.width/2 + 2, y: size.height - scoreLabel.frame.height - 2)
+        gameLayer.addChild(scoreLabel)
+        
+        //label for timer
+        timerLabel.text = timerMessage + String(hour) + ":" + String(min) + ":" + String(sec)
+        timerLabel.fontSize = 20
+        timerLabel.fontColor = SKColor.red
+        timerLabel.position = CGPoint(x: timerLabel.frame.width/2 + 5, y: size.height - scoreLabel.frame.height - timerLabel.frame.height - 2)
+        gameLayer.addChild(timerLabel)
         
         //create physicsWorld
         physicsWorld.gravity = CGVector.zero
@@ -56,8 +73,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let enemyEnterDuration = Calculation.random(min: CGFloat(1.0), max: CGFloat(2.0))
         
         //repeat to add enemy
-        
-        
         gameLayer.run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addNormalEnemy),
@@ -65,10 +80,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 ])
         ))
         
+        //interval of enemy2 entering
+        let enemy2EnterDuration = calculateEnemy2Duration()
+        
+        //add enemy2
+        gameLayer.run(SKAction.repeatForever(
+            SKAction.sequence([
+                SKAction.run(addEnemy2),
+                SKAction.wait(forDuration: TimeInterval(enemy2EnterDuration))
+                ])
+        ))
+        
+        //timer
+        gameLayer.run(SKAction.repeatForever(
+            SKAction.sequence([
+                SKAction.run(calculateTimer),
+                SKAction.wait(forDuration: 1.0)
+                ])
+        ))
+
+        
         // add music background
         let bgMusic : SKAudioNode = SKAudioNode(fileNamed: "Background music.mp3")
         bgMusic.autoplayLooped = true
         self.addChild(bgMusic)
+        
+    }
+    
+    //calculation enemy2 enery duration
+    func calculateEnemy2Duration()->CGFloat{
+        if(hour == 0 && min == 0 ){
+            //during 0-1 min
+            return 10.0
+        }else if (hour == 0 && min == 1 ){
+            //during 1-2 mins
+            return 5.0
+        }else{
+            //more than 3 mins
+            return 3.0
+        }
+    }
+    
+    //calculate time
+    func calculateTimer(){
+        timer += 1
+        hour = timer / 3600
+        min = timer % 3600 / 60
+        sec = timer % 3600 % 60
+        timerLabel.text = timerMessage + String(hour) + ":" + String(min) + ":" + String(sec)
         
     }
     
@@ -153,9 +212,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
 
-    
+
+    func addEnemy2(){
+        let enemy2 = Enemy(imageNamed: "enemy2")
+        enemy2.heart = 10
+        
+        //start position
+        let actualX = Calculation.random(min: enemy2.size.width/2, max: size.width - enemy2.size.width/2)
+        enemy2.position = CGPoint(x: actualX, y: size.height + enemy2.size.height/2)
+        
+        gameLayer.addChild(enemy2)
+        
+        //time duration(speed) of enemy2 moving
+        let enemyMoveDuration = Calculation.random(min: CGFloat(8.0), max: CGFloat(10.0))
+        
+        //add actions to enemy2
+        let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -enemy2.size.height/2), duration: TimeInterval(enemyMoveDuration))
+        
+        //interval of firing bombs
+        let fireBombDuration = Calculation.random(min: CGFloat(6.0), max: CGFloat(15.0))
+        
+        
+        //enemy2 repeat to fire bombs
+        let actionForever = SKAction.repeatForever(
+            SKAction.sequence([
+                SKAction.run({self.addBomb(enemy2, enemyMoveDuration)}),
+                SKAction.wait(forDuration: TimeInterval(fireBombDuration))
+                ])
+        )
+        
+        let actionMoveDone = SKAction.removeFromParent()
+        enemy2.run(SKAction.sequence([SKAction.group([actionMove, actionForever]), actionMoveDone]))
+    }
     
     func addNormalEnemy(){
+        
         //add enemy
         let enemy = Enemy(imageNamed: "enemy")
         enemy.heart = 0
@@ -288,7 +379,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bullet.removeFromParent()
             enemy.removeFromParent()
             score += 1;
-            label.text = message + String(score)
+            scoreLabel.text = scoreMessage + String(score)
         } else {
             
             enemy.heart -= 1

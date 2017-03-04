@@ -217,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func addEnemy2(){
         let enemy2 = Enemy(imageNamed: "enemy2")
-        enemy2.heart = 10
+        enemy2.heart = 20
         
         //start position
         let actualX = Calculation.random(min: enemy2.size.width/2, max: size.width - enemy2.size.width/2)

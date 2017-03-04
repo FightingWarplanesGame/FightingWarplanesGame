@@ -10,6 +10,7 @@ import SpriteKit
 
 class Bullet : Weapon {
     // the animation associated with the bullet
+    
     private var animatePlayerAction = SKAction();
     
     // ctor
@@ -25,6 +26,7 @@ class Bullet : Weapon {
         self.physicsBody?.usesPreciseCollisionDetection = true
         
         self.position = hero.position
+        super.type = self
     }
     
     // create a Animation for move action

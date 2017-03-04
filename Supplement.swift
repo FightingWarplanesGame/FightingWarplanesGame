@@ -13,4 +13,22 @@ import SpriteKit
  */
 class Supplement : SKSpriteNode {
     
+    private var _laser : Laser?
+    private var _missile : Missile?
+    
+    var laser : Laser {
+        get {
+            return _laser!
+        } set {
+            _laser = newValue
+        }
+    }
+    
+    var missile : Missile {
+        get {
+            return _missile!
+        } set {
+            _missile = newValue
+        }
+    }
 }

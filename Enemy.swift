@@ -12,6 +12,7 @@ class Enemy : SKSpriteNode {
     
     private var _weapon : Weapon?
     private var _hearts : Int32?  // this is regarding to blood
+    private var _supp : Supplement?
 
     //ctor
     init(imageNamed : String) {
@@ -40,6 +41,14 @@ class Enemy : SKSpriteNode {
             return _hearts!
         } set {
             _hearts = newValue
+        }
+    }
+    
+    var supp : Supplement {
+        get {
+            return _supp!
+        } set {
+            _supp = newValue
         }
     }
     

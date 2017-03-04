@@ -31,6 +31,7 @@ class Bomb : Weapon {
         self.physicsBody?.usesPreciseCollisionDetection = true
         
         self.position = CGPoint(x: _enemy!.position.x, y: _enemy!.position.y - _enemy!.size.height/2 - self.size.height/2)
+        super.type = self
         
     }
     

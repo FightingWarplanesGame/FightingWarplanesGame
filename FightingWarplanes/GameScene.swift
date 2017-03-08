@@ -205,15 +205,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func addBomb(_ enemyNode: Enemy!, _ enemyDuration: CGFloat!) -> Void{
         //add bomb
-        let bomb = Bomb(imageNamed: "bomb", enemy: enemyNode!, enemyDuration: enemyDuration!)
+        let bomb = Bomb(imageNamed: "bomb", enemy: enemyNode!, enemyDuration: enemyDuration!, viewSize: size)
         gameLayer.addChild(bomb)
         
         //add actions to bomb
-        bomb.createMoveAnimation(size)
+        bomb.createMoveAnimation()
         bomb.runAnimation()
 
     }
 
+    func addScatterBombs(_ enemyNode: Enemy!, _ enemyDuration: CGFloat!){
+        //add scatter bombs
+        let scatterBombs = ScatterBombs(imageNamed: "bomb2", enemy: enemyNode!, enemyDuration: enemyDuration!, viewSize: size)
+        gameLayer.addChild(scatterBombs)
+        
+        //add actions to scatter bombs
+        scatterBombs.runScatterBombsShooting()
+    }
 
     func addEnemy2(){
         let enemy2 = Enemy(imageNamed: "enemy2")
@@ -232,13 +240,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: CGPoint(x: actualX, y: -enemy2.size.height/2), duration: TimeInterval(enemyMoveDuration))
         
         //interval of firing bombs
-        let fireBombDuration = Calculation.random(min: CGFloat(6.0), max: CGFloat(15.0))
+        let fireBombDuration = Calculation.random(min: CGFloat(3.0), max: CGFloat(6.0))
         
         
         //enemy2 repeat to fire bombs
         let actionForever = SKAction.repeatForever(
             SKAction.sequence([
-                SKAction.run({self.addBomb(enemy2, enemyMoveDuration)}),
+                SKAction.run({self.addScatterBombs(enemy2, enemyMoveDuration)}),
                 SKAction.wait(forDuration: TimeInterval(fireBombDuration))
                 ])
         )

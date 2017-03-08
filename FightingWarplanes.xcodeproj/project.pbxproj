@@ -14,6 +14,7 @@
 		5A1BD66E1E44894500FF8A20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A1BD66D1E44894500FF8A20 /* Assets.xcassets */; };
 		5A1BD6711E44894500FF8A20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A1BD66F1E44894500FF8A20 /* LaunchScreen.storyboard */; };
 		5A1BD6791E44AEA100FF8A20 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1BD6781E44AEA100FF8A20 /* GameOverScene.swift */; };
+		5A1D38AB1E6FE42A00EDFF42 /* ScatterBombs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1D38AA1E6FE42A00EDFF42 /* ScatterBombs.swift */; };
 		5A69964A1E55A20900B64540 /* Calculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6996491E55A20900B64540 /* Calculation.swift */; };
 		7A1B9BE61E4C37B300DC5DBD /* Pause Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BB21E4C37B300DC5DBD /* Pause Menu.png */; };
 		7A1B9BE71E4C37B300DC5DBD /* Quit Button 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BB31E4C37B300DC5DBD /* Quit Button 2.png */; };
@@ -88,6 +89,7 @@
 		5A1BD6701E44894500FF8A20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A1BD6721E44894500FF8A20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A1BD6781E44AEA100FF8A20 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		5A1D38AA1E6FE42A00EDFF42 /* ScatterBombs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScatterBombs.swift; sourceTree = "<group>"; };
 		5A6996491E55A20900B64540 /* Calculation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculation.swift; sourceTree = "<group>"; };
 		7A1B9BB21E4C37B300DC5DBD /* Pause Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pause Menu.png"; sourceTree = "<group>"; };
 		7A1B9BB31E4C37B300DC5DBD /* Quit Button 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quit Button 2.png"; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 				7AC2124E1E54E01F00F5551C /* Missile.swift */,
 				7AC212501E54E71C00F5551C /* Bomb.swift */,
 				7AC212521E54E75300F5551C /* Laser.swift */,
+				5A1D38AA1E6FE42A00EDFF42 /* ScatterBombs.swift */,
 			);
 			name = Arsenal;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				7A1B9C161E4C40B400DC5DBD /* GameplayScene.swift in Sources */,
 				7AC212561E54ECAC00F5551C /* Supplement.swift in Sources */,
 				5A1BD6691E44894500FF8A20 /* GameViewController.swift in Sources */,
+				5A1D38AB1E6FE42A00EDFF42 /* ScatterBombs.swift in Sources */,
 				F2D072FB1E569B1800653272 /* PauseButton.swift in Sources */,
 				5A1BD6791E44AEA100FF8A20 /* GameOverScene.swift in Sources */,
 				7AC2124F1E54E01F00F5551C /* Missile.swift in Sources */,

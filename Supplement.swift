@@ -13,22 +13,35 @@ import SpriteKit
  */
 class Supplement : SKSpriteNode {
     
-    private var _laser : Laser?
-    private var _missile : Missile?
+    private var suppAnimation : SKAction
     
-    var laser : Laser {
-        get {
-            return _laser!
-        } set {
-            _laser = newValue
-        }
+    init(imageNamed : String, enemy : Enemy){
+        let texture = SKTexture(imageNamed: imageNamed)
+        suppAnimation = SKAction()
+        super.init(texture: texture, color: UIColor.cyan, size: texture.size())
+        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.categoryBitMask = PhysicsCategory.Supplement
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.Player
+        self.physicsBody?.collisionBitMask = PhysicsCategory.None
+        self.physicsBody?.usesPreciseCollisionDetection = true
+        self.position = enemy.position
+        
     }
     
-    var missile : Missile {
-        get {
-            return _missile!
-        } set {
-            _missile = newValue
-        }
+    func createMoveAnimation(_ viewSize : CGSize) {
+        suppAnimation = SKAction.move(to: CGPoint(x: self.position.x, y: viewSize.height + self.size.height/2), duration: 2.0)
     }
+    
+    // run the animation
+    func runAnimation() {
+        let actionMoveDone = SKAction.removeFromParent()
+        let actionWait = SKAction.wait(forDuration: 1000)
+        self.run(SKAction.sequence([suppAnimation, actionWait, actionMoveDone]))
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

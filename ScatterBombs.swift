@@ -18,6 +18,8 @@ class ScatterBombs : SKNode{
     private var bomb3 : Bomb?
     private var bomb4 : Bomb?
     private var bomb5 : Bomb?
+    // FIRE
+    //let scatterBombFire : SKEmitterNode = SKEmitterNode(fileNamed: "ScatterBombFire")!
     
     // ctor
     init(imageNamed: String, enemy: Enemy, enemyDuration: CGFloat, viewSize: CGSize) {
@@ -27,6 +29,7 @@ class ScatterBombs : SKNode{
         _enemyDuration = enemyDuration
         
         bomb1 = Bomb(imageNamed: imageNamed, enemy: enemy, enemyDuration: enemyDuration, viewSize: viewSize)
+        //bomb1?.addChild(scatterBombFire)
         self.addChild(bomb1!)
         
         bomb2 = Bomb(imageNamed: imageNamed, enemy: enemy, enemyDuration: enemyDuration, viewSize: viewSize)
@@ -62,7 +65,7 @@ class ScatterBombs : SKNode{
         
         //shooting at 90 degree
         let bomb3ActionRun = SKAction.run{
-            self.bomb3?.createMoveAnimation()
+            self.bomb3?.createMoveAnimation(speed : 1.8)
             self.bomb3?.runAnimation()
         }
         

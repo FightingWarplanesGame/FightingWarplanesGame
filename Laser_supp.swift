@@ -1,11 +1,14 @@
 //
-//  PauseButton.swift
+//  Laser_supp.swift
 //  FightingWarplanes
 //
-//  Created by Wayne Wang on 2017-02-16.
+//  Created by Wayne Wang on 2017-03-10.
 //  Copyright © 2017 Rachel Liu. All rights reserved.
 //
 
 import Foundation
-import SpriteKit
 
+class Laser_supp : Supplement {
+    
+    
+}

@@ -328,14 +328,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !gameLayer.isPaused {
             for t in touches {
-                if (hero?.contains(t.location(in: self)))! {
-                    self.touchMoved(toPoint: t.location(in: self))
-                    let touchLocation = t.location(in: self)
-                    hero?.position = touchLocation
-                }
-//                self.touchMoved(toPoint: t.location(in: self))
-//                let touchLocation = t.location(in: self)
-//                hero?.position = touchLocation
+//                if (hero?.contains(t.location(in: self)))! {
+//                    self.touchMoved(toPoint: t.location(in: self))
+//                    let touchLocation = t.location(in: self)
+//                    hero?.position = touchLocation
+//                }
+                self.touchMoved(toPoint: t.location(in: self))
+                let touchLocation = t.location(in: self)
+                hero?.position = touchLocation
             }
         }
         

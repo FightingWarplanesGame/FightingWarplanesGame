@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Bomb.createMoveAnimation(radin : CGFloat, isLeftDegree : Bool) -&gt; ():Bomb.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.position.x - endPoint.x">
+            </PersistentString>
+            <PersistentString
+               value = "_viewSize?.height">
+            </PersistentString>
+            <PersistentString
+               value = "self.position.x - self.position.y * tan(radin)">
+            </PersistentString>
+            <PersistentString
+               value = "sqrt(pow(self.position.x - endPoint.x, 2.0)+pow(self.position.y - endPoint.y,2.0))">
+            </PersistentString>
+            <PersistentString
+               value = "_enemyDuration">
+            </PersistentString>
+            <PersistentString
+               value = "self.position.y - endPoint.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.didBegin(SKPhysicsContact) -&gt; ():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "firstBody.categoryBitMask == PhysicsCategory.Bullet">
+            </PersistentString>
+            <PersistentString
+               value = "PhysicsCategory.Enemy != 0 &amp;&amp; PhysicsCategory.Bullet != 0">
+            </PersistentString>
+            <PersistentString
+               value = "firstBody.categoryBitMask == PhysicsCategory.Enemy">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Bomb.calculateEndPoint(radin : CGFloat, isLeftDegree : Bool) -&gt; CGPoint:Bomb.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.position.x">
+            </PersistentString>
+            <PersistentString
+               value = "tan(radin)">
+            </PersistentString>
+            <PersistentString
+               value = "self.position.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

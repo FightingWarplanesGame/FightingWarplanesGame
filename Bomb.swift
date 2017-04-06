@@ -21,6 +21,8 @@ class Bomb : Weapon {
         let texture = SKTexture(imageNamed: imageNamed)
         super.init(texture: texture, color: UIColor.cyan, size: texture.size())
         
+        
+        
         _enemy = enemy
         _enemyDuration = enemyDuration
         _viewSize = viewSize
@@ -38,10 +40,13 @@ class Bomb : Weapon {
     }
     
     // create a Animation for move action in vertical direction
-    func createMoveAnimation() {
+    func createMoveAnimation(speed : CGFloat) {
         //time during(speed) of bomb moving
-        let bombMoveDuration = (_enemy!.position.y + _enemy!.size.height/2) /
-            (((_viewSize?.height)! + _enemy!.size.height) / _enemyDuration! * 1.2)
+        let bombMoveDuration1 = _enemy!.position.y + _enemy!.size.height/2
+        
+        let bombMoveDuration2 = ((_viewSize?.height)! + _enemy!.size.height) / _enemyDuration! * speed
+        
+        let bombMoveDuration = bombMoveDuration1/bombMoveDuration2
         
         animateBombAction = SKAction.move(to: CGPoint(x: self.position.x, y: -self.size.height/2), duration: TimeInterval(bombMoveDuration))
     }

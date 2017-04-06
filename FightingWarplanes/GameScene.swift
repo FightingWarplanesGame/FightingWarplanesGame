@@ -38,7 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let background1 = SKSpriteNode(imageNamed: "first_top")
     let background2 = SKSpriteNode(imageNamed: "second_bottom")
     let bgMusic : SKAudioNode = SKAudioNode(fileNamed: "Background music.mp3")
-    
+    var time : String!
     
     override func didMove(to view: SKView) {
         
@@ -57,6 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameLayer.addChild(scoreLabel)
         
         //label for timer
+        
         timerLabel.text = timerMessage + String(hour) + ":" + String(min) + ":" + String(sec)
         timerLabel.fontSize = 20
         timerLabel.fontColor = SKColor.red
@@ -209,18 +210,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameLayer.addChild(bomb)
         
         //add actions to bomb
-        bomb.createMoveAnimation()
+        bomb.createMoveAnimation(speed: 1.5)
         bomb.runAnimation()
+        
+        // FIRE
+        let bombFire : SKEmitterNode = SKEmitterNode(fileNamed: "BombFire")!
+        bomb.addChild(bombFire)
 
     }
 
-    func addScatterBombs(_ enemyNode: Enemy!, _ enemyDuration: CGFloat!){
+    func addScatterBombs(_ enemyNode: Enemy!, _ enemyDuration: CGFloat!) -> Void{
         //add scatter bombs
         let scatterBombs = ScatterBombs(imageNamed: "bomb2", enemy: enemyNode!, enemyDuration: enemyDuration!, viewSize: size)
-        gameLayer.addChild(scatterBombs)
+        // FIRE
+//        let scatterBombFire : SKEmitterNode = SKEmitterNode(fileNamed: "ScatterBombFire")!
+//        scatterBombs.addChild(scatterBombFire)
         
+        gameLayer.addChild(scatterBombs)
         //add actions to scatter bombs
         scatterBombs.runScatterBombsShooting()
+        
+        
+        
     }
 
     func addEnemy2(){
@@ -318,11 +329,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if !gameLayer.isPaused {
             for t in touches {
                 if (hero?.contains(t.location(in: self)))! {
-                    
+                    self.touchMoved(toPoint: t.location(in: self))
+                    let touchLocation = t.location(in: self)
+                    hero?.position = touchLocation
                 }
-                self.touchMoved(toPoint: t.location(in: self))
-                let touchLocation = t.location(in: self)
-                hero?.position = touchLocation
+//                self.touchMoved(toPoint: t.location(in: self))
+//                let touchLocation = t.location(in: self)
+//                hero?.position = touchLocation
             }
         }
         
@@ -431,7 +444,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //go to GameOverScene
         let loseAction = SKAction.run() {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false, score: self.score)
+            self.time = "You survived " + String(self.hour) + ":" + String(self.min) + ":" + String(self.sec)
+            let gameOverScene = GameOverScene(size: self.size, score: self.score, time: self.time)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         let sequence = SKAction.sequence([delay,loseAction])
@@ -453,7 +467,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //go to GameOverScene
         let loseAction = SKAction.run() {
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            let gameOverScene = GameOverScene(size: self.size, won: false, score: self.score)
+            self.time = "You survived " + String(self.hour) + ":" + String(self.min) + ":" + String(self.sec)
+            let gameOverScene = GameOverScene(size: self.size, score: self.score, time: self.time)
             self.view?.presentScene(gameOverScene, transition: reveal)
         }
         let sequence = SKAction.sequence([delay,loseAction])
@@ -501,9 +516,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 playerDidCollideWithBomb(player: player, bomb: bomb)
             }
         }
-        
-        
-        
     }
 }
 

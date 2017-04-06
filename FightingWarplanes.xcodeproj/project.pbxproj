@@ -60,7 +60,6 @@
 		7A1B9C0F1E4C37B300DC5DBD /* Start Game Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9BE51E4C37B300DC5DBD /* Start Game Button.png */; };
 		7A1B9C161E4C40B400DC5DBD /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C151E4C40B400DC5DBD /* GameplayScene.swift */; };
 		7A1B9C191E4C495D00DC5DBD /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C181E4C495D00DC5DBD /* Hero.swift */; };
-		7A1B9C1B1E4C615600DC5DBD /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */; };
 		7A7B0E101E5587440034C098 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */; };
 		7A8242711E4D3E1B0056A573 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8242701E4D3E1B0056A573 /* MainMenuScene.swift */; };
 		7A8242731E4D42930056A573 /* HignscoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A8242721E4D42930056A573 /* HignscoreScene.sks */; };
@@ -74,7 +73,10 @@
 		7AC212561E54ECAC00F5551C /* Supplement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC212551E54ECAC00F5551C /* Supplement.swift */; };
 		7AEB16E71E6A05F900EFC453 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7AEB16E51E6A05F900EFC453 /* Explosion.sks */; };
 		7AEB16E81E6A05F900EFC453 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AEB16E61E6A05F900EFC453 /* Assets.xcassets */; };
-		F2D072FB1E569B1800653272 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D072FA1E569B1800653272 /* PauseButton.swift */; };
+		F231FD561E7364710018787E /* Laser_supp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F231FD551E7364710018787E /* Laser_supp.swift */; };
+		F231FD5C1E736EAA0018787E /* BombFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = F231FD5B1E736EAA0018787E /* BombFire.sks */; };
+		F231FD5E1E7370E20018787E /* ScatterBombFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = F231FD5D1E7370E20018787E /* ScatterBombFire.sks */; };
+		F23492491E9607E500C1E340 /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = F23492481E9607E500C1E340 /* MainMenu.sks */; };
 		F2D073061E56B6C000653272 /* resume.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D073041E56B6C000653272 /* resume.png */; };
 		F2D073071E56B6C000653272 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = F2D073051E56B6C000653272 /* pause.png */; };
 /* End PBXBuildFile section */
@@ -135,7 +137,6 @@
 		7A1B9BE51E4C37B300DC5DBD /* Start Game Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Game Button.png"; sourceTree = "<group>"; };
 		7A1B9C151E4C40B400DC5DBD /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
 		7A1B9C181E4C495D00DC5DBD /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
-		7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		7A8242701E4D3E1B0056A573 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		7A8242721E4D42930056A573 /* HignscoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HignscoreScene.sks; sourceTree = "<group>"; };
@@ -149,7 +150,10 @@
 		7AC212551E54ECAC00F5551C /* Supplement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Supplement.swift; sourceTree = "<group>"; };
 		7AEB16E51E6A05F900EFC453 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		7AEB16E61E6A05F900EFC453 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F2D072FA1E569B1800653272 /* PauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
+		F231FD551E7364710018787E /* Laser_supp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laser_supp.swift; sourceTree = "<group>"; };
+		F231FD5B1E736EAA0018787E /* BombFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BombFire.sks; sourceTree = "<group>"; };
+		F231FD5D1E7370E20018787E /* ScatterBombFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ScatterBombFire.sks; sourceTree = "<group>"; };
+		F23492481E9607E500C1E340 /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		F2D073041E56B6C000653272 /* resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume.png; sourceTree = "<group>"; };
 		F2D073051E56B6C000653272 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +179,7 @@
 				5A1BD65E1E44894500FF8A20 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		5A1BD65E1E44894500FF8A20 /* Products */ = {
 			isa = PBXGroup;
@@ -195,7 +200,6 @@
 				5A1BD66F1E44894500FF8A20 /* LaunchScreen.storyboard */,
 				5A1BD6721E44894500FF8A20 /* Info.plist */,
 				5A1BD6781E44AEA100FF8A20 /* GameOverScene.swift */,
-				F2D072FA1E569B1800653272 /* PauseButton.swift */,
 			);
 			path = FightingWarplanes;
 			sourceTree = "<group>";
@@ -350,10 +354,12 @@
 		7A1B9C101E4C393700DC5DBD /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */,
+				F231FD5B1E736EAA0018787E /* BombFire.sks */,
+				F23492481E9607E500C1E340 /* MainMenu.sks */,
 				7A8242721E4D42930056A573 /* HignscoreScene.sks */,
 				7AEB16E51E6A05F900EFC453 /* Explosion.sks */,
 				7AEB16E61E6A05F900EFC453 /* Assets.xcassets */,
+				F231FD5D1E7370E20018787E /* ScatterBombFire.sks */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -423,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				7AC212551E54ECAC00F5551C /* Supplement.swift */,
+				F231FD551E7364710018787E /* Laser_supp.swift */,
 			);
 			name = Supplement;
 			sourceTree = "<group>";
@@ -475,7 +482,7 @@
 				TargetAttributes = {
 					5A1BD65C1E44894500FF8A20 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6ALG84S583;
+						DevelopmentTeam = N6RP3H788Z;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -522,25 +529,27 @@
 				7A1B9BFB1E4C37B300DC5DBD /* Click Sound.wav in Resources */,
 				7A1B9C0C1E4C37B300DC5DBD /* Music On Button.png in Resources */,
 				7A8242731E4D42930056A573 /* HignscoreScene.sks in Resources */,
+				F23492491E9607E500C1E340 /* MainMenu.sks in Resources */,
 				5A1BD66C1E44894500FF8A20 /* Main.storyboard in Resources */,
 				7A1B9C0D1E4C37B300DC5DBD /* Options Button.png in Resources */,
 				7A1B9C0A1E4C37B300DC5DBD /* Highscore Button.png in Resources */,
 				7A1B9BED1E4C37B300DC5DBD /* Player 1.png in Resources */,
 				7A1B9BF91E4C37B300DC5DBD /* blow.ttf in Resources */,
 				7A1B9C001E4C37B300DC5DBD /* Menu BG.png in Resources */,
-				7A1B9C1B1E4C615600DC5DBD /* MainMenu.sks in Resources */,
 				7A1B9BF41E4C37B300DC5DBD /* Player 8.png in Resources */,
 				7A1B9BFD1E4C37B300DC5DBD /* Life Sound.wav in Resources */,
 				7A1B9C031E4C37B300DC5DBD /* Ready.png in Resources */,
 				7A1B9BE71E4C37B300DC5DBD /* Quit Button 2.png in Resources */,
 				7A87E9E61E4DB3B000FCC26C /* Menu BG2.png in Resources */,
 				7A1B9BFE1E4C37B300DC5DBD /* Game BG.png in Resources */,
+				F231FD5E1E7370E20018787E /* ScatterBombFire.sks in Resources */,
 				7A1B9BFF1E4C37B300DC5DBD /* Highscore BG.png in Resources */,
 				7A1B9BE81E4C37B300DC5DBD /* Resume Button.png in Resources */,
 				7A1B9BF61E4C37B300DC5DBD /* Cloud 2.png in Resources */,
 				7A1B9C071E4C37B300DC5DBD /* Easy Button.png in Resources */,
 				7A1B9C0F1E4C37B300DC5DBD /* Start Game Button.png in Resources */,
 				7A1B9BF01E4C37B300DC5DBD /* Player 4.png in Resources */,
+				F231FD5C1E736EAA0018787E /* BombFire.sks in Resources */,
 				7A1B9C0B1E4C37B300DC5DBD /* Music Off Button.png in Resources */,
 				7A1B9BEA1E4C37B300DC5DBD /* Coin.png in Resources */,
 				5A1BD66E1E44894500FF8A20 /* Assets.xcassets in Resources */,
@@ -566,11 +575,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A1BD6671E44894500FF8A20 /* GameScene.swift in Sources */,
+				F231FD561E7364710018787E /* Laser_supp.swift in Sources */,
 				7A1B9C161E4C40B400DC5DBD /* GameplayScene.swift in Sources */,
 				7AC212561E54ECAC00F5551C /* Supplement.swift in Sources */,
 				5A1BD6691E44894500FF8A20 /* GameViewController.swift in Sources */,
 				5A1D38AB1E6FE42A00EDFF42 /* ScatterBombs.swift in Sources */,
-				F2D072FB1E569B1800653272 /* PauseButton.swift in Sources */,
 				5A1BD6791E44AEA100FF8A20 /* GameOverScene.swift in Sources */,
 				7AC2124F1E54E01F00F5551C /* Missile.swift in Sources */,
 				7AC212511E54E71C00F5551C /* Bomb.swift in Sources */,
@@ -703,10 +712,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6ALG84S583;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				INFOPLIST_FILE = FightingWarplanes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lei001.FightingWarplanes;
+				PRODUCT_BUNDLE_IDENTIFIER = siyuan;
 				PRODUCT_NAME = Warplanes;
 				SWIFT_VERSION = 3.0;
 			};
@@ -716,10 +726,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6ALG84S583;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = N6RP3H788Z;
 				INFOPLIST_FILE = FightingWarplanes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lei001.FightingWarplanes;
+				PRODUCT_BUNDLE_IDENTIFIER = siyuan;
 				PRODUCT_NAME = Warplanes;
 				SWIFT_VERSION = 3.0;
 			};

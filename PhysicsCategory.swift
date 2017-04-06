@@ -15,4 +15,5 @@ class PhysicsCategory: NSObject {
     static let Bullet: UInt32 = 0b10      // 2
     static let Player: UInt32 = 0b100      // 3
     static let Bomb: UInt32 = 0b1000      // 4
+    static let Supplement : UInt32 = 0b10000 //5
 }

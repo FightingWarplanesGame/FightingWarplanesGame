@@ -24,7 +24,6 @@ class Bullet : Weapon {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
         self.physicsBody?.usesPreciseCollisionDetection = true
-        
         self.position = hero.position
         super.type = self
     }

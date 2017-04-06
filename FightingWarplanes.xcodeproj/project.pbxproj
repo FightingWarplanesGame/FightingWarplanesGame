@@ -61,6 +61,7 @@
 		7A1B9C161E4C40B400DC5DBD /* GameplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C151E4C40B400DC5DBD /* GameplayScene.swift */; };
 		7A1B9C191E4C495D00DC5DBD /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1B9C181E4C495D00DC5DBD /* Hero.swift */; };
 		7A1B9C1B1E4C615600DC5DBD /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */; };
+		7A2E68081E9603E900CDB861 /* appname.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E68071E9603E900CDB861 /* appname.png */; };
 		7A7B0E101E5587440034C098 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */; };
 		7A8242711E4D3E1B0056A573 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8242701E4D3E1B0056A573 /* MainMenuScene.swift */; };
 		7A8242731E4D42930056A573 /* HignscoreScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 7A8242721E4D42930056A573 /* HignscoreScene.sks */; };
@@ -136,6 +137,7 @@
 		7A1B9C151E4C40B400DC5DBD /* GameplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayScene.swift; sourceTree = "<group>"; };
 		7A1B9C181E4C495D00DC5DBD /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		7A1B9C1A1E4C615600DC5DBD /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
+		7A2E68071E9603E900CDB861 /* appname.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appname.png; sourceTree = "<group>"; };
 		7A7B0E0F1E5587440034C098 /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
 		7A8242701E4D3E1B0056A573 /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		7A8242721E4D42930056A573 /* HignscoreScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HignscoreScene.sks; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 		7A1B9BDF1E4C37B300DC5DBD /* 3 - Main Menu Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				7A2E68071E9603E900CDB861 /* appname.png */,
 				7A1B9BE01E4C37B300DC5DBD /* Highscore Button.png */,
 				7A1B9BE11E4C37B300DC5DBD /* Music Off Button.png */,
 				7A1B9BE21E4C37B300DC5DBD /* Music On Button.png */,
@@ -525,6 +528,7 @@
 				5A1BD66C1E44894500FF8A20 /* Main.storyboard in Resources */,
 				7A1B9C0D1E4C37B300DC5DBD /* Options Button.png in Resources */,
 				7A1B9C0A1E4C37B300DC5DBD /* Highscore Button.png in Resources */,
+				7A2E68081E9603E900CDB861 /* appname.png in Resources */,
 				7A1B9BED1E4C37B300DC5DBD /* Player 1.png in Resources */,
 				7A1B9BF91E4C37B300DC5DBD /* blow.ttf in Resources */,
 				7A1B9C001E4C37B300DC5DBD /* Menu BG.png in Resources */,

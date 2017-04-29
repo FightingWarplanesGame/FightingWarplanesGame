@@ -1,6 +1,11 @@
 # FightingWarplanesGame
 IOS game app development
 
+**_authors_**
+1. Lei Pei
+2. Wayne Wang
+3. Rachel Liu
+
 **_Hero Flight:_**
 
 * Player, touch move to shoot enemy flights

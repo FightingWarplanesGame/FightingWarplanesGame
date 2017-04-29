@@ -1,7 +1,7 @@
 # FightingWarplanesGame
 IOS game app development
 
-**_authors_**
+**_authors:_**
 1. Lei Pei
 2. Wayne Wang
 3. Rachel Liu
@@ -12,12 +12,12 @@ IOS game app development
 * Avoid bombs from enemy flights, avoid to hit on enemy flights
 * After destroy an enemy flight, get a score
 
-**_Enemy Flights_**
+**_Enemy Flights:_**
 
 * Fire bombs periodically, the position of flights randomly
 * Two different enemy flights, repeat to fire single bomb/scattered bombs
 
-**_Functionalities_**
+**_Functionalities:_**
 
 * Display current score, and time
 * Enemy flights fire bombs
